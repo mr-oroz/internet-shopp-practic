@@ -1,21 +1,33 @@
-import React, {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { services } from '../../services/services';
 const Nav = () => {
-    const [list] = useState([
-        1, 2, 3, 4, 5, 6, 7, 8
-    ])
+    const [categories, setCategories] = useState([])
+    
+    useEffect(() => {
+        const data = async () => {
+            await services.getCategories()
+                .then(res => setCategories(res.data))
+        }
+        data()
+    })
+
     let navigate = useNavigate()
-    const toggleClick = (number) => {
-        console.log(number)
-        navigate(`/product/${number}`)
+
+    const toggleClick = async (title) => {
+        navigate(`/product/${title}`)
     }
     return (
         <div className='nav-menu'>
             <h3>category products</h3>
             <ul>
                 {
-                    list.map(elem => {
-                        return <li onClick={() => toggleClick(elem)}>{elem}</li>
+                    categories.map(elem => {
+                        return <li
+                            key={elem}
+                            onClick={() => toggleClick(elem)}>
+                            {elem}
+                        </li>
                     })
                 }
             </ul>
