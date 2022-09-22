@@ -17,7 +17,7 @@ const App = () => {
           <Nav />
         </div>
         <div className='col-7 main'>
-          <Main />
+          <Main/>
         </div>
       </div>
     </div>

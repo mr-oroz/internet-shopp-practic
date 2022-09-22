@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { services } from '../../services/services';
 const Nav = () => {
     const [categories, setCategories] = useState([])
     
+    const data = useCallback(async () => await services.getCategories(), [services.getCategories])
+
     useEffect(() => {
-        const data = async () => {
-            await services.getCategories()
-                .then(res => setCategories(res.data))
-        }
-        data()
+        data().then(res => setCategories(res.data))
     })
 
     let navigate = useNavigate()

@@ -10,3 +10,22 @@ a {
 ul li {
   cursor: pointer;
 }
+
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+
+.product-item {
+  width: 250px;
+  border: 2px solid #eee;
+  padding: 20px;
+  margin: 20px;
+  height: 380px;
+}
+.product-item img {
+  width: 100%;
+}

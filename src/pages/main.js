@@ -9,9 +9,10 @@ const Main = () => {
         <Routes>
             <Route path='/' element={<Home />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path='/product/:product' element={<Product/>}/>
+            <Route path='/product/:product' element={<Product/>} />
         </Routes>
     );
 };
+
 
 export default Main;
