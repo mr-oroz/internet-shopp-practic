@@ -1,26 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { services } from '../../services/services';
+import { MyContext } from '../../context/my-context';
+
 const Product = () => {
     let { product } = useParams()
-    const [data, setData] = useState([])
-
-  useEffect(() => {
-    const data = async () => {
-      await services.getCategoryProduct(product)
-        .then(res => {
-          console.log(res)
-          setData(res.data.products)
-        })
-    }
-    data()
-  }, [product])
+    // useEffect(() => {
+    //     const data = async () => {
+    //         await services.getCategoryProduct(product)
+    //             .then(res => {
+    //                 console.log(res)
+    //                 setData(res.data.products)
+    //             })
+    //     }
+    //     data()
+    // }, [product])
 
     return (
         <>
-            <h1>{product} ({data.length})</h1>
+            {/* <h1>{product} ({data.length})</h1> */}
             <div className='product'>
-                {
+                {/* {
                     data.map(elem => {
                         return (
                             <div className='product-item'>
@@ -30,8 +30,8 @@ const Product = () => {
                             </div>
                         )
                     })
-                }
-               
+                } */}
+
             </div>
         </>
     );

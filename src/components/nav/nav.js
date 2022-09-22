@@ -1,18 +1,23 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { services } from '../../services/services';
-const Nav = () => {
-    const [categories, setCategories] = useState([])
-    
-    const data = useCallback(async () => await services.getCategories(), [services.getCategories])
+import { MyContext } from '../../context/my-context';
 
+const Nav = () => {
+    const {categories, getCategory} = useContext(MyContext)  
     useEffect(() => {
-        data().then(res => setCategories(res.data))
+        const data = async () => {
+            await services.getCategories()
+                .then(res => {
+                    getCategory(res.data)
+                })
+        }
+        data()
     })
 
     let navigate = useNavigate()
 
-    const toggleClick = async (title) => {
+    const toggleClick = (title) => {
         navigate(`/product/${title}`)
     }
     return (

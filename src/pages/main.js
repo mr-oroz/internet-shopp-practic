@@ -10,7 +10,7 @@ const Main = () => {
             <Route path='/' element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path='/product/:product' element={<Product/>} />
-        </Routes>
+       </Routes>
     );
 };
 
