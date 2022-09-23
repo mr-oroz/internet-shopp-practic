@@ -4,38 +4,38 @@ import { services } from '../../services/services';
 import { MyContext } from '../../context/my-context';
 
 const Nav = () => {
-    const {categories, getCategory} = useContext(MyContext)  
-    useEffect(() => {
-        const data = async () => {
-            await services.getCategories()
-                .then(res => {
-                    getCategory(res.data)
-                })
-        }
-        data()
-    })
-
-    let navigate = useNavigate()
-
-    const toggleClick = (title) => {
-        navigate(`/product/${title}`)
+  const { categories, getCategoryState } = useContext(MyContext)
+  useEffect(() => {
+    const data = async () => {
+      await services.getCategories()
+        .then(res => {
+          getCategoryState(res.data)
+        })
     }
-    return (
-        <div className='nav-menu'>
-            <h3>category products</h3>
-            <ul>
-                {
-                    categories.map(elem => {
-                        return <li
-                            key={elem}
-                            onClick={() => toggleClick(elem)}>
-                            {elem}
-                        </li>
-                    })
-                }
-            </ul>
-        </div>
-    );
+    data()
+  })
+
+  let navigate = useNavigate()
+
+  const toggleClick = (title) => {
+    navigate(`/product/${title}`)
+  }
+  return (
+    <div className='nav-menu'>
+      <h3>category products</h3>
+      <ul>
+        {
+          categories.map(elem => {
+            return <li
+              key={elem}
+              onClick={() => toggleClick(elem)}>
+              {elem}
+            </li>
+          })
+        }
+      </ul>
+    </div>
+  );
 };
 
 export default Nav;

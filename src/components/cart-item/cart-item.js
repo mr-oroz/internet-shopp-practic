@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CartItem = () => {
+const CartItem = ({title, images, price}) => {
     return (
-        <div>
-            
+        <div className='product-item'>
+            <button>delete item</button>
         </div>
     );
 };
