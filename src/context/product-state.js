@@ -4,7 +4,8 @@ import { ProductReducer } from './product-reducer'
 import {
   GET_CATEGORY,
   GET_CATEGORY_PRODUCT,
-  ADD_TOD_CART
+  ADD_TOD_CART,
+  DELETE_TO_CART
 } from './types'
 
 export const ProductState = ({ children }) => {
@@ -19,6 +20,8 @@ export const ProductState = ({ children }) => {
   const getCategoryState = (data) => dispatch({ type: GET_CATEGORY, payload: data })
   const getCategoryProduct = (data) => dispatch({ type: GET_CATEGORY_PRODUCT, payload: data })
   const addToCart = (id) => dispatch({ type: ADD_TOD_CART, id })
+  const deleteCart = (id) => dispatch({ type: DELETE_TO_CART, id })
+
   
   return (
     <MyContext.Provider value={{
@@ -29,7 +32,8 @@ export const ProductState = ({ children }) => {
       categories: state.categories,
       getCategoryState,
       getCategoryProduct,
-      addToCart
+      addToCart,
+      deleteCart
     }}>
       {children}
     </MyContext.Provider>

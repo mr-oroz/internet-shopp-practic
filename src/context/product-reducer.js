@@ -1,5 +1,5 @@
 
-import { GET_CATEGORY, GET_CATEGORY_PRODUCT, ADD_TOD_CART } from './types';
+import { GET_CATEGORY, GET_CATEGORY_PRODUCT, ADD_TOD_CART, DELETE_TO_CART } from './types';
 
 export const ProductReducer = (state, action) => {
   // console.log("state reducer >>> ", state)
@@ -21,6 +21,15 @@ export const ProductReducer = (state, action) => {
       const {cart, data} = state;
       const element = data.find((elem) => elem.id === id);
       const newArr = [...cart, element];
+      return {
+        ...state,
+        cart: newArr
+      }
+    }
+    case DELETE_TO_CART: {
+      const {id} = action;
+      const {cart} = state;
+      const newArr = cart.filter(e => e.id !== id)
       return {
         ...state,
         cart: newArr
